@@ -1,0 +1,162 @@
+\documentclass[11pt]{article}
+
+
+\setlength{\parindent}{0pt}
+\usepackage{xltxtra}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\usepackage{url}
+\urlstyle{tt}
+\usepackage{xcolor}
+\definecolor{CVBlue}{RGB}{23,110,191}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{enumitem}
+\CJKsetecglue{} %% 取消中文与数字之间的间隙
+
+
+%% 主文档字体设置
+\setmainfont[
+    Path = fonts/Main/,
+    Extension = .otf,
+    BoldFont = texgyretermes-bold.otf, % 加粗字体
+]{texgyretermes-regular.otf} % 正文字体
+
+% 中文字体设置
+\setCJKmainfont[
+    Path = fonts/hansans/,
+    Extension = .ttf,
+    BoldFont = NotoSansSC-Bold.ttf, % 加粗字体
+]{NotoSansSC-Regular.otf} % 正文字体
+
+
+\usepackage{relsize}
+\usepackage{xspace}
+
+% 使用 fontawesome（部分图标）
+\usepackage{fontawesome} 
+
+% A4纸，上下左右边距
+\usepackage[
+    a4paper,
+    left=1.2cm,
+    right=1.2cm,
+    top=1.5cm,
+    bottom=1cm,
+    nohead
+]{geometry}
+
+\renewcommand{\baselinestretch}{1.5} % 行间距设为1.5
+
+\usepackage{titlesec}
+\usepackage{enumitem}
+\setlist{noitemsep} % 取消列表项间的额外间距
+%\setlist{nosep} % 取消所有垂直间距
+\setlist[itemize]{topsep=0.25em, leftmargin=*}
+\setlist[enumerate]{topsep=0.25em, leftmargin=*}
+
+% --- 用于控制【不同项目之间】的垂直距离 ---
+\newlength{\interProjectSpacing}
+\setlength{\interProjectSpacing}{0.9em} % <--- 在此调整项目之间的距离
+\newcommand{\projectsep}{\vspace{\interProjectSpacing}}
+
+% --- 用于控制【项目标题】与下方【项目描述】的距离 ---
+\newlength{\intraProjectTitleSep}
+\setlength{\intraProjectTitleSep}{0.4em} % <--- 在此调整标题和描述的距离
+\newcommand{\titlebreak}{\\[\intraProjectTitleSep]}
+
+% --- 用于控制【项目描述】与下方【要点列表】的距离 ---
+\newlength{\intraProjectListTopSep}
+\setlength{\intraProjectListTopSep}{0.2em} % <--- 在此调整描述和列表的距离
+
+% =======================================================================
+
+
+\titleformat{\section}         % 定制 \section 命令 
+{\large\bfseries\raggedright} % 将 section 标题设置为大号、粗体且左对齐
+{}{0em}                      % 可用于为所有 section 添加前缀（如“章节...”）
+{}                           % 可用于在标题前插入代码
+[{\color{CVBlue}\titlerule}]  % 在标题后插入一条横线
+\titlespacing*{\section}{0cm}{*1.6}{*1.2}
+
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+%%%% 利用tikz来定位照片（简历中未提供照片，已注释；如需照片，将照片命名为 avatar.jpg 放入本目录并取消下面三行的注释）
+%\begin{tikzpicture}[remember picture, overlay] 
+%    \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
+%  \end{tikzpicture}%
+  %%%% 利用tikz来定位学校Logo，这里只在第一页显示（李硕现就读于浙江大学，保留校徽）
+  \begin{tikzpicture}[remember picture, overlay] 
+    \node[anchor = north west] at ($(current page.north west)+(0.5cm,+1.0cm)$) {\includegraphics[height=6cm]{zju.png}};
+  \end{tikzpicture}%
+\centerline{\LARGE\bfseries{李硕}} 
+
+\centerline{\normalsize{\faPhone\ 136-1413-3375 \quad \faEnvelopeO\ \href{mailto:1050196454@qq.com}{1050196454@qq.com} \quad 现居地：浙江杭州}} 
+
+\centerline{\normalsize{学历：硕士 \quad 政治面貌：共青团员 \quad 生日：2002.03}} 
+    
+\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景}    
+\textbf{浙江大学} \hfill 2024.09 -- 至今\\[0.5em] % 标题和正文间加一点距离
+先进集成电路制造工程\quad 硕士研究生
+\begin{itemize}[nosep]
+    \item 硕士课题：人工智能辅助通用超声流量计的周期跳变和动态匹配
+\end{itemize}
+
+\projectsep
+
+\textbf{吉林大学} \hfill 2020.09 -- 2024.06\\[0.5em]
+电子科学与工程\quad 本科
+\begin{itemize}[nosep]
+    \item 专业课程：人工智能辅助集成电路制造、机器学习、自然语言处理、计算机视觉、微电子器件物理
+\end{itemize}
+
+\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 项目经历}
+
+% --- 第一个项目 ---
+% 将标题行末尾的 \\ 替换为 \titlebreak 命令
+\textbf{基于 Agent 的跨平台端侧智能日程提取} \hfill 2026.07 -- 2026.08 \titlebreak
+项目描述：针对现有 Agent 多依赖 PC 本地部署或云端环境、且即时通讯日程可能出现遗漏的问题，设计并开发了一套运行于移动端的轻量级智能日程提取与系统级日历同步 Agent Skill。
+% 在 itemize 的选项中，使用 topsep=\intraProjectListTopSep 来控制上边距
+\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
+    \item 结合移动端隐私特性，利用 Android 原生“状态栏通知监听服务”实现即时通讯消息的后台监听与过滤，不使用外挂或 hook 钩子手段。
+    \item 设计防御性 JSON Schema 约束，注入动态基准时间与星期，消除大模型在时间推算中的歧义与幻觉。
+    \item \textbf{成果}：实现 Android 和 iOS 端零人工干预静默同步，解决大模型输出 Markdown 导致的端侧解析崩溃问题。
+\end{itemize}
+
+% 使用 \projectsep 命令来分隔两个项目
+\projectsep
+
+% --- 第二个项目 ---
+\textbf{包含多源文献抓取、RAG 与 LoRA 微调 Skills 的自主领域专家 Agent 架构开发} \hfill 2026.06 -- 2026.07 \titlebreak
+项目描述：针对通用大模型在垂直领域缺乏深度支撑及专属微调链路的应用场景，自主设计并搭建了一套集分布式文献抓取、RAG 向量检索与 LoRA 微调子进程调度于一体的领域专家 Agent 运行底座。
+\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
+    \item 设计基于轮流循环算法的多源抓取状态机，接入多个权威 API，引入游标分页追踪与自适应熔断机制。
+    \item 基于通用 LLM 接口规范打造自适应关键词重构模块，将中文自然语言重构为英文学术检索关键词。
+    \item 基于内置 SOP 实现微调语料格式转换与子进程环境隔离调用，实现专业领域推理能力内化，并支持部署期无损零延迟权重合并。
+    \item 采用带参装饰器工厂模式实现 Tool Registry 即插即用注册，结合 HarnessEvaluator 对抓取篇数、向量分块及 LoRA 训练收敛 Loss 进行自动化质量评估与反思重试。
+    \item \textbf{成果}：跑通“学术数据自动化采集—向量库构建—本地小模型 LoRA 专属微调”的端到端 Agent Skill 闭环，大幅降低领域模型定制与文献调研门槛。
+\end{itemize}
+
+\section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 技术栈}
+\begin{itemize}[nosep]
+    \item \textbf{编程语言：} Python
+    \item \textbf{深度学习：} 熟悉 PyTorch 框架，理解反向传播数学推导与权重衰减机制；熟悉 Transformer 框架，了解 LLM 实现原理（tokenizer、embedding 词嵌入、注意力机制等）
+    \item \textbf{大模型与 Agent：} 了解 LoRA 低秩微调原理与权重合并上线流程；熟悉 Prompt 结构化输出工程、Function Calling 机制、上下文管理与记忆机制、沙盒隔离、评估与反思机制等 Agent 相关知识
+    \item \textbf{开发框架：} 能够使用 FastAPI 搭建高并发 RESTful 服务；了解 Android 原生开发
+\end{itemize}
+
+\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faList}\ 获奖情况}
+\begin{itemize}
+    \item 浙江大学集成电路学院优秀研究生 \hfill 2025
+    \item 吉林大学校文体奖学金 \hfill 2021
+    \item 吉林大学校三等奖学金 \hfill 2021
+\end{itemize}
+    
+\end{document}
