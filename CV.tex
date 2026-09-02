@@ -123,7 +123,7 @@
 \section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}\faBriefcase}\ 实习经历}
 
 \textbf{浙江睿朗信息科技有限公司} \hfill 2026.02 -- 2026.07\\[0.5em]
-AI 产品实习生（智能体方向）\quad 「领域专家」智能体工作站（Agent Harness 底座 + 桌面客户端）从 0 到 1 搭建
+AI 产品实习生（智能体方向）\quad 「领域专家」智能体平台（Agent + 桌面客户端）从 0 到 1 搭建
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
     \item \textbf{需求洞察与架构决策}：围绕“通用大模型缺乏领域知识、企业专属模型定制链路长门槛高”的痛点独立完成方案设计；第一版“采集—检索—生成”固定流水线验证后，针对其异常场景无法自适应的问题，将流程控制权从代码上移至大模型自主决策，重构为“Agent 运行底座—工具/技能体系—桌面客户端”三层架构。
     \item \textbf{Agent 底座设计}：设计目标驱动的工具调用调度主循环，配套三类质量门禁（工具协议校验、检索防重复空转的强制收敛、零结果与训练异常拦截）、失败反思反馈重注入与步数上限终态兜底；设计装饰器式工具注册中心，原子工具即插即用并自动导出 Function Calling 规范，沉淀 6+ 原子工具与 3 个复合技能（SOP）。
