@@ -38,7 +38,7 @@
 \usepackage{xspace}
 
 % 使用 fontawesome（部分图标）
-\usepackage{fontawesome} 
+\usepackage{fontawesome}
 
 % A4纸，上下左右边距
 \usepackage[
@@ -76,7 +76,7 @@
 % =======================================================================
 
 
-\titleformat{\section}         % 定制 \section 命令 
+\titleformat{\section}         % 定制 \section 命令
 {\large\bfseries\raggedright} % 将 section 标题设置为大号、粗体且左对齐
 {}{0em}                      % 可用于为所有 section 添加前缀（如“章节...”）
 {}                           % 可用于在标题前插入代码
@@ -89,22 +89,20 @@
 \pagenumbering{gobble}
 
 %%%% 利用tikz来定位照片（简历中未提供照片，已注释；如需照片，将照片命名为 avatar.jpg 放入本目录并取消下面三行的注释）
-%\begin{tikzpicture}[remember picture, overlay] 
+%\begin{tikzpicture}[remember picture, overlay]
 %    \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
 %  \end{tikzpicture}%
   %%%% 利用tikz来定位学校Logo，这里只在第一页显示
-  \begin{tikzpicture}[remember picture, overlay] 
+  \begin{tikzpicture}[remember picture, overlay]
     \node[anchor = north west] at ($(current page.north west)+(0.5cm,+1.0cm)$) {\includegraphics[height=6cm]{zju.png}};
   \end{tikzpicture}%
-\centerline{\LARGE\bfseries{李硕}} 
+\centerline{\LARGE\bfseries{李硕}}
 
-% 在这一行上方添加垂直下移间距（可根据实际视觉效果微调 2mm~5mm）
-\vspace{5mm}
-\centerline{\normalsize{\faPhone\ 136-1413-3375 \quad \faEnvelopeO\ \href{mailto:1050196454@qq.com}{1050196454@qq.com} \quad 现居地：浙江杭州}} 
+\centerline{\normalsize{\faPhone\ 136-1413-3375 \quad \faEnvelopeO\ \href{mailto:1050196454@qq.com}{1050196454@qq.com} \quad 现居地：浙江杭州}}
 
-\centerline{\normalsize{学历：硕士 \quad 政治面貌：共青团员 \quad 生日：2002.03}} 
-    
-\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景}    
+\centerline{\normalsize{学历：硕士 \quad 政治面貌：共青团员 \quad 生日：2002.03}}
+
+\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景}
 \textbf{浙江大学} \hfill 2024.09 -- 2027.06\\[0.5em] % 标题和正文间加一点距离
 先进集成电路制造工程\quad 硕士研究生
 \begin{itemize}[nosep]
@@ -119,25 +117,25 @@
     \item 专业课程：机器学习、自然语言处理、计算机视觉、人工智能辅助集成电路制造、微电子器件物理
 \end{itemize}
 
-% 【投递前务必把公司名替换为可背书的真实公司名，详见随附的包装说明】
 \section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}\faBriefcase}\ 实习经历}
 
-\textbf{浙江睿朗信息科技有限公司} \hfill 2026.06 -- 2026.08\\[0.5em]
-AI 产品实习生（智能体方向）\quad 企业级“领域专家”智能体平台从 0 到 1 搭建
+\textbf{浙江睿朗信息科技有限公司} \hfill 2026.02 -- 2026.07\\[0.5em]
+AI 产品实习生（智能体方向）\quad 「领域专家」智能体平台（Agent + 桌面客户端）从 0 到 1 搭建
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{需求洞察与方案设计}：围绕企业落地垂直领域大模型时“通用模型领域知识不足、专属定制链路缺失”的痛点，独立完成智能体产品的能力规划与方案设计，定义“多源数据自动采集—知识检索增强—专属微调上线”的端到端工作流，并输出产品方案与验证文档。
-    \item \textbf{智能体能力落地}：设计多源数据自动抓取的轮询调度状态机，引入分页追踪与自适应熔断机制保障稳定性；设计工具即插即用注册机制与微调任务的子进程隔离调度，实现采集、检索、训练到权重合并上线的全链路自动化、零手动干预。
-    \item \textbf{评估体系搭建}：设计覆盖数据采集量、检索分块质量、微调收敛效果的自动化评估与反思重试机制，使智能体输出质量可量化、失败可回溯，并基于评估结果持续迭代提示词与工作流。
-    \item \textbf{成果}：验证了“自动化数据采集—知识库构建—本地小模型专属微调”闭环的可行性，显著降低领域模型定制与文献调研门槛；全程以 AI 辅助编码方式独立完成原型开发与调试，形成了对 AI Coding 协作模式与能力边界的系统认知。
+    \item \textbf{需求洞察与架构决策}：围绕“通用大模型缺乏领域知识、企业专属模型定制链路长门槛高”的痛点独立完成方案设计；第一版“采集—检索—生成”固定流水线验证后，针对其异常场景无法自适应的问题，将流程控制权从代码上移至大模型自主决策，重构为“Agent 运行底座—工具/技能体系—桌面客户端”三层架构。
+    \item \textbf{Agent 底座设计}：设计目标驱动的工具调用调度主循环，配套三类质量门禁（工具协议校验、检索防重复空转的强制收敛、零结果与训练异常拦截）、失败反思反馈重注入与步数上限终态兜底；设计装饰器式工具注册中心，原子工具即插即用并自动导出 Function Calling 规范，沉淀 6+ 原子工具与 3 个复合技能（SOP）。
+    \item \textbf{真实微调链路落地}：将微调链路从模拟实现重构为真实 LoRA 训练——基于 transformers + peft + bitsandbytes 实现 4bit NF4 量化的低秩适应微调，在消费级单卡 GPU 上以 23 组领域问答语料完成 20 轮训练，损失自 2.91 收敛至 0.97（降幅 66.8\%），可训练参数量仅占全模型约 2\%（18.4M / 907M），产出 73.9MB PEFT 适配器，以“底模 + 适配器”方式挂载上线；并实现对 345 步步进损失曲线的全量落盘与收敛性验证。
+    \item \textbf{产品化交付}：独立交付桌面客户端，支持多领域会话工作区、文献拖拽入库、5 家模型服务商配置与本地模型接入；采集、推理、训练三路任务子进程隔离，检索超时熔断与崩溃日志落盘；并为文件类工具实现工作区边界沙箱（realpath 解析防路径穿越、系统危险目录拒绝、写入扩展名白名单），设计带重要度评分与时效衰减的长期记忆系统与超长上下文自动压缩；问答语料自动沉淀为训练集并设置最小语料量门禁，完成“语料沉淀—训练任务调度—进度监控—崩溃诊断”的微调链路工程化封装。
+    \item \textbf{验证与成果}：在 7 个跨学科领域（含 4 个工科与 2 个人文历史方向）完成端到端验证，接入 arXiv、OpenAlex、Semantic Scholar 等 5 个学术数据源，累计入库结构化文献 184 篇、蒸馏领域问答语料 23 条，验证了架构的领域无关通用性与“一键生成文献综述”闭环可行性；同一底模挂载 LoRA 前后的 4 组对照推理实验显示，领域内问题回答的术语贴合度显著提升，并以训练集外问题验证了微调对通用能力的影响边界；全程 AI 辅助编码、沉淀 400 余页调试复盘日志，独立定位并解决前端 C++ 级内存崩溃等多类环境与架构问题。
 \end{itemize}
 
 \projectsep
 
-\textbf{合作企业（高校横向课题）} \hfill 2025.09 -- 2026.06\\[0.5em]
+\textbf{合作企业（高校横向课题）} \hfill 2024.10 -- 2025.12\\[0.5em]
 算法实习生 \quad 工业超声波气体流量计周期跳变智能检测与消除
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item 跨 9 个月完成 -20℃～39℃ 多温度区间、6 个实验批次 20 余组工况的实气标定实验，独立负责数据采集与整理，构建实测样本 21,000 余组。
-    \item 开展 200 余轮训练实验，独立定位仿真—实测域偏移问题（实测准确率仅 22.4\%），设计硬件噪声注入与物理机理驱动的稀缺样本合成方案，将实测准确率提升至 78.6\%（+56 个百分点）；最终模型在 21,652 组企业实测数据上平均误差 0.12 个计量周期，模型体积 3.5MB、CPU 单样本推理 2.3 毫秒，通过企业实测验证、达到工业部署标准。
+    \item 跨一年完成 -20℃～39℃ 多温度区间、6 个实验批次 20 余组工况的实气标定实验，独立负责数据采集与整理，构建实测样本 21,000 余组。
+    \item 开展 200 余轮训练实验，独立定位仿真—实测域偏移问题（实测准确率仅 22.4\%），设计硬件噪声注入与物理机理驱动的稀缺样本合成方案，将实测准确率提升至 78.6\%（+56 个百分点）；最终模型在 21,652 组企业实测数据上平均误差 0.12 个计量周期，模型体积 3.5MB，通过企业实测验证。
 \end{itemize}
 
 \section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 项目经历}
@@ -164,10 +162,10 @@ AI 产品实习生（智能体方向）\quad 企业级“领域专家”智能�
 
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 技术栈}
 \begin{itemize}[nosep]
-    \item \textbf{大模型与 Agent：} 熟悉 Prompt Engineering、Function Calling、上下文与记忆机制、沙盒隔离、RAG 向量检索、自动化评估与反思机制；了解 SFT/LoRA 微调原理与权重合并上线流程；理解 Transformer、注意力机制、tokenizer 等大模型基础原理
-    \item \textbf{深度学习：} 熟练使用 Python 与 PyTorch；知晓 CNN、双向 GRU、多头注意力等时序建模方法；了解扩散模型（Illustrious-XL、Flux）图像微调全流程
+    \item \textbf{大模型与 Agent：} 熟悉 Prompt Engineering、Function Calling、上下文与记忆机制、沙盒隔离、RAG 向量检索、自动化评估与反思机制；熟悉 SFT/LoRA 微调原理与全流程（4bit NF4 量化训练、真实损失曲线收敛验证、PEFT 适配器保存与挂载上线）；理解 Transformer、注意力机制、tokenizer 等大模型基础原理
+    \item \textbf{深度学习：} 熟练使用 Python 与 PyTorch；掌握 CNN、双向 GRU、多头注意力等时序建模方法；了解扩散模型（Illustrious-XL、Flux）图像微调全流程
     \item \textbf{AI Coding 实践：} 长期高频使用 AI 辅助编码工具独立完成 4 个完整项目（智能体平台、移动端智能体、图像微调、工业算法），熟悉“需求拆解—代码生成—幻觉排查—验证交付”全流程，对 AI Coding 产品的能力边界与典型失效模式有一手实践经验
-    \item \textbf{工程与工具：} 能够使用 FastAPI 搭建高并发 RESTful 服务；了解 Android 原生开发；了解 Git ，具备从数据采集、实验调试到模型交付的完整工程经验
+    \item \textbf{工程与工具：} 能够使用 FastAPI 搭建高并发 RESTful 服务；了解 Android 原生开发；熟悉 Git、Linux，具备从数据采集、实验调试到模型交付的完整工程经验
 \end{itemize}
 
 \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faList}\ 获奖情况}
@@ -176,5 +174,5 @@ AI 产品实习生（智能体方向）\quad 企业级“领域专家”智能�
     \item 吉林大学校文体奖学金 \hfill 2021
     \item 吉林大学校三等奖学金 \hfill 2021
 \end{itemize}
-    
+
 \end{document}
