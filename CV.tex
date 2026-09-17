@@ -137,7 +137,7 @@
 \textbf{合作企业（高校横向课题）} \hfill 2024.10 -- 2025.12\\[0.5em]
 算法实习生 \quad 工业超声波气体流量计周期跳变智能检测与消除
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item 跨 9 个月完成 -20℃～39℃ 多温度区间、6 个实验批次 20 余组工况的实气标定实验，独立负责数据采集与整理，构建实测样本 21,000 余组。
+    \item 跨一年完成 -20℃～39℃ 多温度区间、6 个实验批次 20 余组工况的实气标定实验，独立负责数据采集与整理，构建实测样本 21,000 余组。
     \item 开展 200 余轮训练实验，独立定位仿真—实测域偏移问题（实测准确率仅 22.4\%），设计硬件噪声注入与物理机理驱动的稀缺样本合成方案，将实测准确率提升至 78.6\%（+56 个百分点）；最终模型在 21,652 组企业实测数据上平均误差 0.12 个计量周期，模型体积 3.5MB、CPU 单样本推理 2.3 毫秒，通过企业实测验证、达到工业部署标准。
 \end{itemize}
 
@@ -147,25 +147,14 @@
 \textbf{Agent 工程化实践：容器化交付、本地推理服务与 MCP 工具生态（个人项目）} \hfill 2026.08 \titlebreak
 项目描述：在自研 Agent Harness 基础上补全“可交付、可部署”工程链路，独立完成容器化打包、本地推理服务部署与 MCP 标准协议工具接入。
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{容器化交付}：将 CLI 内核与桌面 GUI 解耦并作为容器 ENTRYPOINT（\texttt{python -u} 关闭块缓冲保证日志实时输出）；从完整环境手工裁剪依赖清单、剔除 PyQt6 等 GUI 依赖，镜像瘦身约 1GB；通过 \texttt{.dockerignore} 排除模型权重与密钥配置，使用 bind mount 与命名卷分离工作区、运行时配置与模型缓存；独立排查 WSL2 虚拟化组件缺失、数据盘占满导致运行时崩溃等环境问题并完成磁盘迁移。
+    \item \textbf{容器化交付}：将 CLI 内核与桌面 GUI 解耦并作为容器 ENTRYPOINT；独立排查 WSL2 虚拟化组件缺失、数据盘占满导致运行时崩溃等环境问题并完成磁盘迁移。
     \item \textbf{本地推理服务}：基于 vLLM 官方镜像部署 Qwen2.5-1.5B-Instruct 的 OpenAI 兼容服务，定位并绕过 WSL2 平台 UVA 不可用的兼容性问题，切换 V1 runner，验证同一套 OpenAI SDK 调用代码仅修改 \texttt{base\_url} 即在云端 API 与本地推理服务间零改动切换；理解 PagedAttention、连续批处理等推理优化机制。
-    \item \textbf{MCP 工具协议}：基于 FastMCP 实现 MCP Server（装饰器注册工具，文档字符串与类型注解自动生成 JSON Schema），并编写 stdio 传输的 Client 完成 initialize 握手、tools/list 工具发现与 tools/call 调用全流程；理清 JSON-RPC 2.0 协议层与 stdio/HTTP 传输层的分工，以及 Function Calling（模型—底座）与 MCP（底座—工具服务）的分层边界。
+    \item \textbf{MCP 工具协议}：基于 FastMCP 实现 MCP Server，并编写 stdio 传输的 Client 完成 initialize 握手、tools/list 工具发现与 tools/call 调用全流程；理清 JSON-RPC 2.0 协议层与 stdio/HTTP 传输层的分工，以及 Function Calling（模型—底座）与 MCP（底座—工具服务）的分层边界。
 \end{itemize}
 
 \projectsep
 
-% --- 项目二：端侧日程 Agent ---
-\textbf{跨平台端侧智能日程提取智能体} \hfill 2026.07 -- 2026.08 \titlebreak
-项目描述：针对智能助手多依赖电脑或云端部署、即时通讯中的日程信息易被遗漏的问题，以 AI 辅助编码方式独立完成需求拆解、开发与端侧联调，交付了一套运行于移动端的轻量级智能日程提取与系统级日历同步智能体技能。
-\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item 结合移动端隐私特性，利用系统原生通知监听能力实现即时通讯消息的后台自动监听与过滤，不使用外挂或钩子手段。
-    \item 设计防御性结构化输出约束，动态注入基准时间与星期信息，消除大模型在时间推算中的歧义与幻觉。
-    \item \textbf{成果}：实现安卓与 iOS 端零人工干预静默同步；独立定位并解决大模型返回 Markdown 格式导致端侧解析崩溃的问题。
-\end{itemize}
-
-\projectsep
-
-% --- 项目三：图像生成微调 ---
+% --- 项目二：图像生成微调 ---
 \textbf{特定角色一致性图像生成模型微调实践（独立项目）} \hfill 2026.07 -- 2026.08 \titlebreak
 项目描述：为实现可控、高一致性的特定角色图像生成，以 AI 辅助编码方式独立完成从数据集构建、模型微调、推理测试到问题排查的完整闭环，验证了小样本个性化图像生成的工程可行性。
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
