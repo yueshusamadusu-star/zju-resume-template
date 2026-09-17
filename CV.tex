@@ -90,7 +90,7 @@
 
 %%%% 利用tikz来定位照片（简历中未提供照片，已注释；如需照片，将照片命名为 avatar.jpg 放入本目录并取消下面三行的注释）
 \begin{tikzpicture}[remember picture, overlay]
-    \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
+    \node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[angle=90, height=3cm]{avatar.jpg}};
   \end{tikzpicture}%
   %%%% 利用tikz来定位学校Logo，这里只在第一页显示
   \begin{tikzpicture}[remember picture, overlay]
@@ -128,7 +128,7 @@
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
     \item \textbf{方案设计与架构决策}：围绕“通用大模型缺乏领域知识、企业专属模型定制链路长门槛高”的痛点独立完成方案设计；第一版“采集—检索—生成”固定流水线验证后，针对其异常场景无法自适应的问题，将流程控制权从代码上移至大模型自主决策，重构为“Agent 运行底座—工具/技能体系—桌面客户端”三层架构。
     \item \textbf{Agent 底座开发}：手写目标驱动的工具调用调度主循环，配套三类质量门禁（工具协议校验、检索防重复空转的强制收敛、零结果与训练异常拦截）、失败反思反馈重注入与步数上限终态兜底；实现装饰器式工具注册中心，原子工具即插即用并自动导出 Function Calling 规范，沉淀 6+ 原子工具与 3 个复合技能（SOP）。
-    \item \textbf{客户端与工程化}：独立交付 PyQt6 桌面客户端，支持多领域会话工作区、文献拖拽入库、5 家模型服务商配置与本地模型接入；采集、推理、训练三路任务子进程隔离，检索超时熔断与崩溃日志落盘；问答语料自动沉淀为训练集并设置最小语料量门禁，完成“语料沉淀—训练任务调度—进度监控—崩溃诊断”的微调链路工程化封装。
+    \item \textbf{客户端与工程化}：独立交付 PyQt6 桌面客户端，支持多领域会话工作区、文献拖拽入库、多模型配置接入；采集、推理、训练三路任务子进程隔离，检索超时熔断与崩溃日志落盘；问答语料自动沉淀为训练集并设置最小语料量门禁，完成“语料沉淀—训练任务调度—进度监控—崩溃诊断”的微调链路工程化封装。
     \item \textbf{验证与成果}：在 7 个跨学科领域（含 4 个工科与 2 个人文历史方向）完成端到端验证，接入 5 个学术数据源，累计入库结构化文献 184 篇、蒸馏领域问答语料 23 条，验证了架构的领域无关通用性与“一键生成文献综述”闭环可行性；使用 AI 辅助编码、沉淀 400 余页调试复盘日志。
 \end{itemize}
 
